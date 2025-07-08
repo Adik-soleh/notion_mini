@@ -22,7 +22,7 @@ npm install
 
 Buat file `.env` di folder backend:
 ```env
-DATABASE_URL="mysql://root:passwordbaru123@localhost:3306/notion_clone_db_new"  (sesuaikan db url anda)
+DATABASE_URL="mysql://root:passwordbaru123@localhost:3306/notion_clone_db_new" 
 JWT_SECRET="asdasdasd"
 ```
 
