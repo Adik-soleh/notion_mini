@@ -165,12 +165,12 @@ const handleDeleteBlock = async (blockId) => {
 
 const addBlock = async (type) => {
   if (!noteId) return;
-  const placeholderContent = {
-    text: "Blok teks baru",
-    checklist: "[ ] Item checklist baru",
-    code: "// Kode Anda di sini",
-    image: "New image block",
-  }[type];
+const placeholderContent = {
+  text: "✨ Mulailah menulis ide kreatifmu di sini...",
+  checklist: "[ ] Tambahkan tugas atau checklist di sini",
+  code: "// 💡 Tulis cuplikan kode atau logika di sini",
+  image: "🖼️ Unggah gambar menarik untuk memperkaya catatanmu",
+}[type];
 
   try {
     const newBlock = await createBlock(noteId, type, placeholderContent);

@@ -192,7 +192,7 @@ const fetchNotes = async () => {
 };
 
 const handleCreate = async () => {
-  const newNote = await createNote("Untitled Note");
+  const newNote = await createNote("Custom");
   router.push(`/notes/${newNote.id}`);
 };
 
