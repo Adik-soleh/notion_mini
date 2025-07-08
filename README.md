@@ -1,11 +1,3 @@
-# Mini Notion Clone 📝
-
-Sebuah aplikasi web pencatatan berbasis blok yang terinspirasi dari Notion, dibangun menggunakan Express.js dan Vue.js dengan fitur drag & drop dan autentikasi JWT.
-
-## 📋 Deskripsi Project
-
-Mini Notion Clone adalah sistem pencatatan (note) berbasis web yang memungkinkan pengguna membuat dan mengedit note dengan format blok (text, checklist, image, code). Aplikasi ini dilengkapi dengan autentikasi JWT menggunakan HTTP-Only Cookie dan mendukung drag & drop untuk mengubah urutan blok dalam note.
-
 ## Jalankan Project 
 
 
@@ -67,14 +59,11 @@ npm run dev
 npm run dev          # Start development server
 npm run start        # Start production server
 npm run migrate      # Run database migrations
-npm run seed         # Seed database with sample data
 ```
 
 ### Frontend
 ```bash
 npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
 ```
 
 
@@ -137,35 +126,6 @@ npm run preview      # Preview production build
 - `DELETE /api/blocks/:id` - Delete block
 - `PUT /api/blocks/reorder` - Reorder blocks
 
-## 🎨 Frontend Structure
-
-```
-frontend/
-├── src/
-│   ├── components/
-│   │   ├── blocks/
-│   │   │   ├── TextBlock.vue
-│   │   │   ├── ChecklistBlock.vue
-│   │   │   ├── ImageBlock.vue
-│   │   │   └── CodeBlock.vue
-│   │   ├── editor/
-│   │   │   ├── BlockEditor.vue
-│   │   │   └── DragDropContainer.vue
-│   │   └── layout/
-│   │       ├── Header.vue
-│   │       └── Sidebar.vue
-│   ├── pages/
-│   │   ├── Login.vue
-│   │   ├── Register.vue
-│   │   ├── Dashboard.vue
-│   │   └── NotePage.vue
-│   ├── stores/
-│   │   ├── auth.js
-│   │   ├── notes.js
-│   │   └── blocks.js
-│   └── router/
-│       └── index.js
-```
 
 
 ## 📝 Usage Guide
@@ -185,7 +145,6 @@ frontend/
 - Input validation dan sanitization
 - XSS protection
 
-## 📦 Deployment
 
 
 ## 🤝 Contributing
