@@ -24,7 +24,7 @@
               <input
                 v-model="form.name"
                 type="name"
-                placeholder="name@example.com"
+                placeholder="Your Name"
                 class="w-full pl-10 pr-4 py-3 bg-white/50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-slate-400"
                 :class="{ 'border-red-500 focus:ring-red-500': errors.name }"
               />

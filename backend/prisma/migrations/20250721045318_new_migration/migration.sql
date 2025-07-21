@@ -18,6 +18,8 @@ CREATE TABLE "Note" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
+    "created_by" TEXT,
+    "update_by" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -32,6 +34,8 @@ CREATE TABLE "Block" (
     "type" "BlockType" NOT NULL,
     "content" TEXT NOT NULL,
     "order_index" INTEGER NOT NULL,
+    "created_by" TEXT,
+    "update_by" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
