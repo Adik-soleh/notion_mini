@@ -10,7 +10,7 @@
 
 ### 1. Clone Repository
 ```bash
-git clone <https://gitlab.com/adiksoleh4/teknikal-tes>
+git clone https://gitlab.com/adiksoleh4/teknikal-tes
 cd mini-notion-clone
 ```
 
@@ -22,8 +22,9 @@ npm install
 
 Buat file `.env` di folder backend:
 ```env
-DATABASE_URL="mysql://root:passwordbaru123@localhost:3306/notion_clone_db_new" 
-JWT_SECRET="asdasdasd"
+DATABASE_URL="postgresql://postgres.npyxayekwnnjeztilbsi:^bLVyB,5Qe9abVD@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.npyxayekwnnjeztilbsi:^bLVyB,5Qe9abVD@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+JWT_SECRET="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
 ```
 
 Jalankan migrasi database:
