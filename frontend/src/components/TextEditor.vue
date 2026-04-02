@@ -107,9 +107,9 @@ export default {
 }
 
 .toolbar-btn.active {
-  background: #e3f2fd;
-  border-color: #2196f3;
-  color: #2196f3;
+  background: #e2e8f0;
+  border-color: #0f172a;
+  color: #0f172a;
 }
 
 .toolbar-btn i {

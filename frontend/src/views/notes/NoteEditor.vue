@@ -1,30 +1,30 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+  <div class="min-h-screen bg-slate-50">
     <div class="max-w-4xl mx-auto p-6">
-      <header class="flex items-center gap-4 mb-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20">
+      <header class="flex items-center gap-6 mb-10 py-6 px-8 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 sticky top-6 z-40">
         <button
           @click="goBack"
-          class="text-slate-500 hover:text-slate-700 p-3 rounded-xl transition-all duration-200 hover:bg-slate-100 hover:scale-105"
+          class="text-slate-400 hover:text-slate-900 p-3 bg-slate-50 hover:bg-slate-100 rounded-full transition-all duration-300 hover:-translate-x-1"
         >
           <ArrowLeftIcon class="w-6 h-6" />
         </button>
 
         <input
           v-model="title"
-          class="flex-1 text-2xl md:text-3xl font-bold bg-transparent border-none outline-none placeholder-slate-400 text-slate-800 focus:placeholder-slate-300 transition-all duration-200"
+          class="flex-1 text-3xl md:text-4xl font-extrabold bg-transparent border-none outline-none placeholder-slate-300 text-slate-900 focus:placeholder-slate-200 transition-all duration-300 tracking-tight"
           placeholder="Judul Catatan"
         />
 
         <button
           @click="handleSave"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:from-blue-600 hover:to-purple-700"
+          class="inline-flex items-center gap-2 px-7 py-3.5 bg-black text-white rounded-full font-bold shadow-[0_4px_14px_0_rgb(0,0,0,0.39)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:bg-black/90 transition-all duration-300 hover:-translate-y-0.5"
         >
-          <CheckIcon class="w-5 h-5" />
+          <CheckIcon class="w-5 h-5 stroke-[2.5]" />
           Simpan
         </button>
       </header>
 
-      <div class="space-y-4">
+      <div class="space-y-6">
         <div
           v-for="(block, index) in blocks"
           :key="block.id"
@@ -33,14 +33,14 @@
           @dragover.prevent
           @dragenter.prevent
           @drop="drop(index)"
-          class="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-white/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-move"
+          class="group relative bg-white rounded-2xl border border-transparent hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 cursor-move"
           :class="{ 'opacity-50 scale-95': draggedIndex === index }"
         >
-          <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <Bars3Icon class="w-5 h-5" />
+          <div class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-300 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-slate-900 cursor-grab active:cursor-grabbing">
+            <Bars3Icon class="w-6 h-6" />
           </div>
           
-          <div class="pl-14 pr-6 py-6">
+          <div class="pl-12 pr-4 py-2">
             <BlockRenderer
               :block="block"
               @change="(content, file) => handleUpdateBlock(block.id, content, file)"
@@ -50,37 +50,37 @@
         </div>
       </div>
 
-      <footer class="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20">
-        <div class="flex flex-wrap gap-3">
+      <footer class="mt-16 mb-20 flex justify-center">
+        <div class="inline-flex flex-wrap items-center gap-2 p-2.5 bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100">
           <button
             @click="addBlock('text')"
-            class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 hover:from-emerald-600 hover:to-teal-700"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent text-slate-600 hover:text-black rounded-full font-bold transition-all duration-200 hover:bg-slate-100"
           >
-            <DocumentTextIcon class="w-5 h-5" />
+            <DocumentTextIcon class="w-5 h-5 stroke-2" />
             Teks
           </button>
           
           <button
             @click="addBlock('checklist')"
-            class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 hover:from-amber-600 hover:to-orange-700"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent text-slate-600 hover:text-black rounded-full font-bold transition-all duration-200 hover:bg-slate-100"
           >
-            <CheckCircleIcon class="w-5 h-5" />
+            <CheckCircleIcon class="w-5 h-5 stroke-2" />
             Checklist
           </button>
           
           <button
             @click="addBlock('code')"
-            class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 hover:from-violet-600 hover:to-purple-700"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent text-slate-600 hover:text-black rounded-full font-bold transition-all duration-200 hover:bg-slate-100"
           >
-            <CodeBracketIcon class="w-5 h-5" />
+            <CodeBracketIcon class="w-5 h-5 stroke-2" />
             Kode
           </button>
           
           <button
             @click="addBlock('image')"
-            class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 hover:from-rose-600 hover:to-pink-700"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent text-slate-600 hover:text-black rounded-full font-bold transition-all duration-200 hover:bg-slate-100"
           >
-            <PhotoIcon class="w-5 h-5" />
+            <PhotoIcon class="w-5 h-5 stroke-2" />
             Gambar
           </button>
         </div>

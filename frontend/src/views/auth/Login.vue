@@ -1,20 +1,20 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-4">
+  <div class="min-h-screen bg-slate-50 flex items-center justify-center p-4">
     <div class="w-full max-w-md">
-      <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 p-8">
-        <div class="text-center mb-8">
-          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-            <DocumentTextIcon class="w-8 h-8 text-white" />
+      <div class="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 p-10">
+        <div class="text-center mb-10">
+          <div class="w-20 h-20 bg-black rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-xl rotate-3 hover:rotate-0 transition-transform duration-300 shadow-slate-300">
+            <DocumentTextIcon class="w-10 h-10 text-white" />
           </div>
-          <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">
             Selamat Datang
           </h2>
-          <p class="text-slate-600 mt-2">Masuk ke akun Anda untuk melanjutkan</p>
+          <p class="text-slate-500 mt-3 font-medium">Masuk ke akun Anda untuk melanjutkan</p>
         </div>
 
-        <form @submit.prevent="onSubmit" class="space-y-6">
+        <form @submit.prevent="onSubmit" class="space-y-7">
           <div class="space-y-2">
-            <label class="block text-sm font-medium text-slate-700">
+            <label class="block text-sm font-semibold text-slate-900 ml-1 mb-2">
               Email
             </label>
             <div class="relative">
@@ -25,11 +25,11 @@
                 v-model="email"
                 type="email"
                 placeholder="name@example.com"
-                class="w-full pl-10 pr-4 py-3 bg-white/50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-slate-400"
-                :class="{ 'border-red-500 focus:ring-red-500': emailError }"
+                class="w-full pl-11 pr-4 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:bg-white focus:ring-4 focus:ring-slate-100 focus:border-black transition-all duration-300 placeholder-slate-400 font-medium text-slate-900"
+                :class="{ 'border-red-500 focus:ring-red-100 focus:border-red-500': emailError }"
               />
             </div>
-            <p v-if="emailError" class="text-sm text-red-500 flex items-center gap-1">
+            <p v-if="emailError" class="text-sm text-red-500 font-medium flex items-center gap-1 mt-2">
               <ExclamationCircleIcon class="w-4 h-4" />
               {{ emailError }}
             </p>
@@ -37,7 +37,7 @@
 
           <!-- Password Field -->
           <div class="space-y-2">
-            <label class="block text-sm font-medium text-slate-700">
+            <label class="block text-sm font-semibold text-slate-900 ml-1 mb-2">
               Password
             </label>
             <div class="relative">
@@ -48,8 +48,8 @@
                 v-model="password"
                 :type="showPassword ? 'text' : 'password'"
                 placeholder="Masukkan password"
-                class="w-full pl-10 pr-12 py-3 bg-white/50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-slate-400"
-                :class="{ 'border-red-500 focus:ring-red-500': passwordError }"
+                class="w-full pl-11 pr-12 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl focus:bg-white focus:ring-4 focus:ring-slate-100 focus:border-black transition-all duration-300 placeholder-slate-400 font-medium text-slate-900"
+                :class="{ 'border-red-500 focus:ring-red-100 focus:border-red-500': passwordError }"
               />
               <button
                 type="button"
@@ -60,18 +60,19 @@
                 <EyeSlashIcon v-else class="h-5 w-5" />
               </button>
             </div>
-            <p v-if="passwordError" class="text-sm text-red-500 flex items-center gap-1">
+            <p v-if="passwordError" class="text-sm text-red-500 font-medium flex items-center gap-1 mt-2">
               <ExclamationCircleIcon class="w-4 h-4" />
               {{ passwordError }}
             </p>
           </div>
 
           <!-- Submit Button -->
-          <button
-            type="submit"
-            :disabled="isLoading"
-            class="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02] hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-          >
+          <div class="pt-2">
+            <button
+              type="submit"
+              :disabled="isLoading"
+              class="w-full py-4 px-4 bg-black text-white rounded-2xl font-bold shadow-[0_4px_14px_0_rgb(0,0,0,0.39)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:bg-black/90 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+            >
             <div v-if="isLoading" class="flex items-center justify-center gap-2">
               <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               Masuk...
@@ -84,12 +85,12 @@
         </form>
 
         <!-- Register Link -->
-        <div class="mt-8 text-center">
-          <p class="text-slate-600">
+        <div class="mt-10 text-center">
+          <p class="text-slate-500 font-medium">
             Belum punya akun?
             <router-link 
               to="/register" 
-              class="font-medium text-blue-600 hover:text-purple-600 transition-colors duration-200"
+              class="font-bold text-black hover:underline transition-all duration-200 ml-1"
             >
               Daftar di sini
             </router-link>
@@ -99,7 +100,7 @@
 
       <!-- Footer -->
       <div class="text-center mt-8 text-slate-500 text-sm">
-        <p>© 2024 My Notes. Semua hak dilindungi.</p>
+        <p>© 2024 Adik Soleh. Semua hak dilindungi.</p>
       </div>
     </div>
   </div>

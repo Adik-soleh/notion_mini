@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-    <nav class="bg-white/80 backdrop-blur-sm border-b border-white/20 shadow-lg sticky top-0 z-50">
+  <div class="min-h-screen bg-slate-50">
+    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div class="w-8 h-8 bg-black rounded flex items-center justify-center shadow-md">
               <DocumentTextIcon class="w-5 h-5 text-white" />
             </div>
-            <span class="ml-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span class="ml-3 text-xl font-extrabold text-slate-900 tracking-tight">
               My Notes
             </span>
           </div>
@@ -15,9 +15,9 @@
           <div class="relative">
             <button
               @click="toggleDropdown"
-              class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 p-1"
+              class="flex items-center space-x-3 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 transition-all duration-200 p-1"
             >
-              <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+              <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-bold shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
                 {{ userInitial }}
               </div>
               <ChevronDownIcon 
@@ -36,11 +36,11 @@
             >
               <div
                 v-show="isDropdownOpen"
-                class="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 py-2 z-50"
+                class="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 py-2 z-50"
               >
                 <div class="px-4 py-3 border-b border-slate-200">
                   <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold">
                       {{ userInitial }}
                     </div>
                     <div>
@@ -70,19 +70,19 @@
     </nav>
 
     <div class="max-w-4xl mx-auto p-6">
-      <header class="flex items-center justify-between mb-8 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20">
+      <header class="flex flex-col sm:flex-row sm:items-center justify-between mb-10 mt-4">
         <div>
-          <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            My Notes
+          <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Catatanku
           </h1>
-          <p class="text-slate-600 mt-1">Kelola catatan Anda dengan mudah</p>
+          <p class="text-slate-500 mt-2 text-lg font-medium">Kelola semua ide dan catatan Anda dengan mudah.</p>
         </div>
         
         <button
           @click="handleCreate"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 hover:from-blue-600 hover:to-purple-700"
+          class="mt-6 sm:mt-0 inline-flex items-center gap-2 px-6 py-3.5 bg-black text-white rounded-full font-bold shadow-[0_4px_14px_0_rgb(0,0,0,0.39)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:bg-black/90 transition-all duration-300 hover:-translate-y-0.5"
         >
-          <PlusIcon class="w-5 h-5" />
+          <PlusIcon class="w-5 h-5" stroke-width="2.5" />
           Catatan Baru
         </button>
       </header>
@@ -91,61 +91,59 @@
         <div
           v-for="note in notes"
           :key="note.id"
-          class="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-white/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer overflow-hidden"
+          class="group relative bg-white rounded-3xl shadow-[0_2px_10px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden flex flex-col min-h-[160px]"
           @click="goToNote(note.id)"
         >
-          <div class="p-6">
-            <div class="flex items-start justify-between mb-4">
-              <div class="flex-1">
-                <h3 class="text-lg font-semibold text-slate-800 truncate">
+          <div class="p-7 flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex-1 pr-4">
+                <h3 class="text-xl font-bold text-slate-900 line-clamp-2">
                   {{ note.title || 'Untitled Note' }}
                 </h3>
-                <p class="text-sm text-slate-500 mt-1">
+                <p class="text-sm text-slate-400 mt-1 font-medium">
                   {{ formatDate(note.updatedAt || note.createdAt) }}
                 </p>
               </div>
               
               <button
                 @click.stop="handleDelete(note.id)"
-                class="opacity-0 group-hover:opacity-100 p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200"
+                class="opacity-0 group-hover:opacity-100 p-2.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all duration-200"
               >
                 <TrashIcon class="w-5 h-5" />
               </button>
             </div>
 
-            <div class="text-sm text-slate-600 line-clamp-3">
+            <div class="text-sm text-slate-500 leading-relaxed font-medium line-clamp-2 mt-4 break-words">
               {{ note.preview || 'Tidak ada konten' }}
             </div>
           </div>
 
-          <div class="px-6 py-4 bg-gradient-to-r from-slate-50/50 to-blue-50/50 border-t border-white/20">
-            <div class="flex items-center justify-between text-xs text-slate-500">
-              <span class="flex items-center gap-1">
+          <div class="px-7 py-4 bg-slate-50/80 border-t border-slate-100 mt-auto">
+            <div class="flex items-center justify-between text-sm font-semibold text-slate-500">
+              <span class="flex items-center gap-1.5">
                 <DocumentTextIcon class="w-4 h-4" />
                 {{ note.block_count || 0 }} blok
               </span>
-              <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full font-medium">
+              <span class="px-3 py-1 bg-white border border-slate-200 text-slate-700 rounded-full text-xs">
                 {{ note.type || 'Note' }}
               </span>
             </div>
           </div>
-
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </div>
       </div>
 
-      <div v-if="notes.length === 0" class="text-center py-16">
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-12 max-w-md mx-auto">
-          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <DocumentTextIcon class="w-8 h-8 text-white" />
+      <div v-if="notes.length === 0" class="text-center py-20">
+        <div class="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 p-12 max-w-md mx-auto">
+          <div class="w-20 h-20 bg-black rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-xl rotate-3 hover:rotate-0 transition-transform duration-300">
+            <DocumentTextIcon class="w-10 h-10 text-white" />
           </div>
-          <h3 class="text-xl font-semibold text-slate-800 mb-2">Belum ada catatan</h3>
-          <p class="text-slate-600 mb-6">Mulai dengan membuat catatan pertama Anda</p>
+          <h3 class="text-2xl font-bold text-slate-900 mb-2">Belum ada catatan</h3>
+          <p class="text-slate-500 mb-8 font-medium">Mulai dengan membuat catatan pertama Anda hari ini</p>
           <button
             @click="handleCreate"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+            class="inline-flex items-center gap-2 px-6 py-4 bg-black text-white rounded-full font-bold shadow-[0_4px_14px_0_rgb(0,0,0,0.39)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:bg-black/90 transition-all duration-300 hover:-translate-y-0.5"
           >
-            <PlusIcon class="w-5 h-5" />
+            <PlusIcon class="w-5 h-5" stroke-width="2.5" />
             Buat Catatan
           </button>
         </div>
