@@ -82,6 +82,7 @@
               Masuk
             </span>
           </button>
+          </div>
         </form>
 
         <!-- Register Link -->
