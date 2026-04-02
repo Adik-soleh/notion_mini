@@ -97,7 +97,7 @@ const imageUrl = computed(() => {
   if (!props.block.content || props.block.content === 'New image block') {
     return 'https://via.placeholder.com/150';
   }
-  return `http://localhost:3001${props.block.content}`;
+  return `https://notion-mini-mpfz.vercel.app/${props.block.content}`;
 });
 
 const debouncedOnChange = debounce((value) => {
